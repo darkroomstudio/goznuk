@@ -1,17 +1,13 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
-import { sql } from '@vercel/postgres'
 
-export async function GET(req: NextRequest) {
-  try {
-    const result = await sql`SELECT * FROM users`
+async function getUser(name: string) {
+  return { id: '0', name: 'Jiwon Choi', username: name }
+}
 
-    if (result.rows.length == 0) {
-      return NextResponse.json({ error: 'No users found' }, { status: 404 })
-    }
-    return NextResponse.json(result.rows)
-  } catch (error) {
-    console.error('Error fetching users:', error)
-    return NextResponse.json({ error: 'Error fetching users' }, { status: 500 })
-  }
+type Context = { params: { name: string } }
+
+export async function GET(req: NextRequest, { params: { name } }: Context) {
+  const user = await getUser(name)
+  return NextResponse.json({ ...user })
 }

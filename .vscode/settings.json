@@ -1,5 +1,4 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
   // Formatting using Prettier by default for all languages
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // Linting using ESLint.
@@ -21,5 +20,5 @@
     "*.ts": "$(capture).test.ts, $(capture).test.tsx",
     "*.tsx": "$(capture).test.ts, $(capture).test.tsx"
   },
-  "cSpell.words": []
+  "cSpell.words": ["Choi", "Jiwon"]
 }
