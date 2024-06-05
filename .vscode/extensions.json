@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    // Linting / Formatting
+    "rust-lang.rust-analyzer",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "usernamehw.errorlens",
+
+    // Showing TODO comments
+    "gruntfuggly.todo-tree",
+
+    // Spelling / Grammar
+    "streetsidesoftware.code-spell-checker"
+  ]
+}
