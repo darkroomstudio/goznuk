@@ -1,4 +1,5 @@
 {
+  "name": "goznuk",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
@@ -22,6 +23,7 @@
     "@types/node": "^20.14.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "@vercel/postgres": "^0.8.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.3",
     "eslint-config-prettier": "^9.1.0",
