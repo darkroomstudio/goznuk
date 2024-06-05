@@ -1,8 +1,8 @@
 import { sql } from '@vercel/postgres'
 import { NextRequest, NextResponse } from 'next/server'
-import { calculateReadTime } from '../../../utils/calculateReadTime'
+import { calculateReadTime } from '../../../utils/calculate-read-time'
 import { slugify } from '../../../utils/slugify'
-import { generatePreview } from '../../../utils/generatePreview'
+import { generatePreview } from '../../../utils/generate-preview'
 
 export async function GET() {
   try {
