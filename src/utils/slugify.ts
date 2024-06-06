@@ -1,16 +1,10 @@
-// src/utils/slugify.ts
-
-/**
- * Converts a string into a URL-friendly slug.
- * @param str - The string to slugify
- * @returns The slugified string
- */
-
-export function slugify(str: string): string {
+export function slugify(str: string | number) {
   return str
+    .toString()
     .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, '') // Remove non-word characters
-    .replace(/[\s_-]+/g, '-') // Replace spaces, underscores, and consecutive dashes with a single dash
-    .replace(/^-+|-+$/g, '') // Remove leading and trailing dashes
+    .trim() // Remove whitespace from both ends of a string
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters except for -
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
 }
