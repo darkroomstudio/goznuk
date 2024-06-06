@@ -1,13 +1,13 @@
 import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
-interface Subscriber {
+type Subscriber = {
   id: string
   name: string
   username: string
 }
 
-interface SubsData {
+type SubsData = {
   [key: string]: Subscriber[]
 }
 
