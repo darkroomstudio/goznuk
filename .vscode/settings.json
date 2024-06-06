@@ -20,5 +20,5 @@
     "*.ts": "$(capture).test.ts, $(capture).test.tsx",
     "*.tsx": "$(capture).test.ts, $(capture).test.tsx"
   },
-  "cSpell.words": ["Choi", "Goznuk", "Jiwon", "tailwindcss"]
+  "cSpell.words": ["Choi", "devjiwonchoi", "Goznuk", "Jiwon", "tailwindcss"]
 }
