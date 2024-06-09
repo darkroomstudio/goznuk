@@ -23,6 +23,7 @@ Centralized blogging platform for all your needs.
 - [ ] Bookmark
 - [ ] Views & Likes
 - [ ] Share Posts
+- [ ] Dark Mode
 
 ### `v0`
 
