@@ -4,6 +4,13 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 export async function updateSession(request: NextRequest) {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL) {
+    throw new Error('Missing env.NEXT_PUBLIC_SUPABASE_URL')
+  }
+  if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    throw new Error('Missing env.NEXT_PUBLIC_SUPABASE_ANON_KEY')
+  }
+
   let response = NextResponse.next({
     request: {
       headers: request.headers,
