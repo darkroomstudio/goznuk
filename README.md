@@ -24,6 +24,7 @@ Centralized blogging platform for all your needs.
 - [ ] Views & Likes
 - [ ] Share Posts
 - [ ] TypeScript Client
+- [ ] Dark Mode
 
 ### `v0`
 
