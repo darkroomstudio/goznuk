@@ -17,12 +17,13 @@ Centralized blogging platform for all your needs.
 
 ### `v0-beta`
 
-> Markdown Blog Platform with API Support
+> Markdown Blog Platform with API and Client Support
 
 - [ ] Subscribers
 - [ ] Bookmark
 - [ ] Views & Likes
 - [ ] Share Posts
+- [ ] TypeScript Client
 - [ ] Dark Mode
 
 ### `v0`
