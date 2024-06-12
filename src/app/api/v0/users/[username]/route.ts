@@ -3,15 +3,11 @@ import { NextResponse } from 'next/server'
 
 import { createClient } from '@/db/supabase/server'
 
-// async function getUser(username: string) {
-//   return { id: '0', name: 'Jiwon Choi', username }
-// }
-
 type Context = { params: { username: string } }
 
 export async function GET(req: NextRequest, { params: { username } }: Context) {
-  // const user = await getUser(username)
   const supabase = createClient()
+
   const { data: user, error } = await supabase
     .from('users')
     .select('*')
