@@ -30,6 +30,7 @@ export async function GET(
     .eq('slug', slug)
     .eq('status', 'draft')
     .eq('user_id', user[0]?.id ?? '')
+    .single()
 
   if (draftError) {
     return NextResponse.json({
