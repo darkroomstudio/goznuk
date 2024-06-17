@@ -17,6 +17,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@clerk/nextjs": "^5.1.5",
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.4",
     "@swc/core": "^1.5.25",
