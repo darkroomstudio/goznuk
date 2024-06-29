@@ -22,3 +22,5 @@ node_modules/
 .DS_Store
 *.pem
 .vercel
+
+*storybook.log
