@@ -16,10 +16,14 @@ export function SignInModal() {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Button onClick={() => setOpen(true)}>Sign in</Button>
+      <Button className="text-md rounded-[12px]" onClick={() => setOpen(true)}>
+        Sign in
+      </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button variant="outline">Open Modal</Button>
+          <Button className="text-md rounded-[12px]" variant="outline">
+            Open Modal
+          </Button>
         </DialogTrigger>
         <DialogContent className="flex max-w-2xl p-0">
           <div className="flex flex-1 items-center justify-center bg-gray-200">
