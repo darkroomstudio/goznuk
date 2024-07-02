@@ -36,7 +36,7 @@ export function Header() {
 
   return (
     <div className="flex h-16 items-center justify-center text-white">
-      <div className="flex h-full w-full max-w-[1200px] items-center justify-between bg-blue-50 text-black">
+      <div className="flex h-full w-full max-w-[1200px] items-center justify-between text-black">
         <div className="flex items-center gap-12">
           <span className="flex items-center gap-2">
             <div className="h-10 w-10 rounded-2xl bg-gray-200"></div>
