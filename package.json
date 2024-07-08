@@ -15,7 +15,7 @@
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-slot": "^1.1.0",
-    "@supabase/ssr": "^0.3.0",
+    "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.44.3",
     "@swc/core": "^1.6.13",
     "@swc/jest": "^0.2.36",
