@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { SignInModal } from './sigin-modal'
+import { AuthDialog } from './auth-dialog'
 
 export function Header() {
   const [isToggled, setIsToggled] = useState(false)
@@ -92,7 +92,7 @@ export function Header() {
           <Button className="text-md rounded-[12px]" variant="outline">
             Start writing
           </Button>
-          <SignInModal />
+          <AuthDialog />
         </div>
       </div>
     </div>

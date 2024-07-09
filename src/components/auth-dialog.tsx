@@ -1,6 +1,6 @@
 'use client'
-
-import { useState, type JSX, type SVGProps } from 'react'
+import type { JSX, SVGProps } from 'react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -12,12 +12,14 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 
-export function SignInModal() {
+export function AuthDialog() {
   const [open, setOpen] = useState(false)
+  const [isSignUp, setIsSignUp] = useState(false)
+  const authText = isSignUp ? 'Sign Up' : 'Sign In'
   return (
     <div>
       <Button className="text-md rounded-[12px]" onClick={() => setOpen(true)}>
-        Sign in
+        {authText}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -31,7 +33,7 @@ export function SignInModal() {
           </div>
           <div className="flex-1 p-8">
             <DialogHeader className="flex items-center justify-between">
-              <DialogTitle>Sign in to Goznuk</DialogTitle>
+              <DialogTitle>{authText} to Goznuk</DialogTitle>
               <Button variant="ghost" onClick={() => setOpen(false)}>
                 <DoorClosedIcon className="h-6 w-6" />
               </Button>
@@ -40,7 +42,7 @@ export function SignInModal() {
               <Input type="email" placeholder="Email Address" />
               <Input type="password" placeholder="Password" />
               <Button className="flex w-full items-center justify-center space-x-2 bg-black text-white">
-                Sign In
+                {authText}
                 <ArrowRightIcon className="h-4 w-4" />
               </Button>
               <div className="space-y-2">
@@ -49,14 +51,14 @@ export function SignInModal() {
                   className="flex w-full items-center justify-center space-x-2"
                 >
                   <ChromeIcon className="h-5 w-5" />
-                  <span>Sign in with Google</span>
+                  <span>{authText} with Google</span>
                 </Button>
                 <Button
                   variant="outline"
                   className="flex w-full items-center justify-center space-x-2"
                 >
                   <GithubIcon className="h-5 w-5" />
-                  <span>Sign in with Github</span>
+                  <span>{authText} with Github</span>
                 </Button>
               </div>
               <p className="text-center">
