@@ -21,6 +21,12 @@ export function AuthDialog() {
   const [isSignUp, setIsSignUp] = useState(false)
   const authText = isSignUp ? 'Sign Up' : 'Sign In'
   const router = useRouter()
+
+  const userButtonAppearance = {
+    elements: {
+      userButtonAvatarBox: 'w-10 h-10',
+    },
+  }
   return (
     <div className="flex items-center space-x-4">
       <SignIn.Root>
@@ -47,7 +53,10 @@ export function AuthDialog() {
           >
             Start Writing
           </Button>
-          <UserButton userProfileMode="modal" />
+          <UserButton
+            appearance={userButtonAppearance}
+            userProfileMode="modal"
+          />
         </SignedIn>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent className="flex max-w-2xl p-0">
