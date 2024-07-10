@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@clerk/elements": "^0.10.1",
     "@clerk/nextjs": "^5.2.2",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -41,7 +42,7 @@
     "tailwindcss-animate": "^1.0.7",
     "turbo": "^2.0.6",
     "typescript": "^5.5.3",
-    "vercel": "^34.3.0"
+    "vercel": "^34.3.1"
   },
   "engines": {
     "node": ">=18.18.0"
