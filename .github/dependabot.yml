@@ -8,6 +8,7 @@ updates: # Daily update for dogfooding canary releases.
       time: '09:00'
     reviewers:
       - 'devjiwonchoi'
+      - 'jeonghoyang12'
     allow:
       - dependency-name: 'next'
     groups:
