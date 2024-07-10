@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import * as Clerk from '@clerk/elements/common'
 import * as SignIn from '@clerk/elements/sign-in'
+import Link from 'next/link'
 
 export function AuthDialog() {
   const [open, setOpen] = useState(false)
@@ -99,9 +100,9 @@ export function AuthDialog() {
                 </div>
                 <p className="text-center">
                   Don’t have an account?{' '}
-                  <a href="#" className="text-blue-500">
+                  <Link href="#" className="text-blue-500">
                     Sign Up
-                  </a>
+                  </Link>
                 </p>
               </DialogDescription>
             </div>
