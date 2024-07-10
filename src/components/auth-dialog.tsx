@@ -17,16 +17,18 @@ export function AuthDialog() {
   const [isSignUp, setIsSignUp] = useState(false)
   const authText = isSignUp ? 'Sign Up' : 'Sign In'
   return (
-    <div>
+    <div className="flex items-center space-x-4">
+      <Button
+        className="text-md rounded-[12px]"
+        variant="outline"
+        onClick={() => setOpen(true)}
+      >
+        Start Writing
+      </Button>
       <Button className="text-md rounded-[12px]" onClick={() => setOpen(true)}>
         {authText}
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button className="text-md rounded-[12px]" variant="outline">
-            Open Modal
-          </Button>
-        </DialogTrigger>
         <DialogContent className="flex max-w-2xl p-0">
           <div className="flex flex-1 items-center justify-center bg-gray-200">
             <div className="text-9xl font-bold text-gray-400">G</div>
