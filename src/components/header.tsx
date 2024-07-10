@@ -7,10 +7,19 @@ import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { SignInModal } from './sigin-modal'
+import {
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+  useAuth,
+} from '@clerk/nextjs'
 
 export function Header() {
   const [isToggled, setIsToggled] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const { user } = useUser() // Checking if the user info is available from Clerk
+  const { userId } = useAuth()
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -33,6 +42,8 @@ export function Header() {
   const blurInput = () => {
     inputRef.current?.blur()
   }
+
+  console.log('hello,', userId)
 
   return (
     <div className="flex h-16 items-center justify-center text-white">
@@ -89,10 +100,15 @@ export function Header() {
           </div>
         </div>
         <div className="flex items-center space-x-4">
-          <Button className="text-md rounded-[12px]" variant="outline">
-            Start writing
-          </Button>
-          <SignInModal />
+          <SignedIn>
+            <Button className="text-md rounded-[12px]" variant="outline">
+              Start writing
+            </Button>
+            <UserButton userProfileMode="modal" />
+          </SignedIn>
+          <SignedOut>
+            <SignInModal />
+          </SignedOut>
         </div>
       </div>
     </div>

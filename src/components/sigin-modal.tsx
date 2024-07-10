@@ -11,64 +11,73 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import * as Clerk from '@clerk/elements/common'
+import * as SignIn from '@clerk/elements/sign-in'
 
 export function SignInModal() {
   const [open, setOpen] = useState(false)
   return (
     <div>
-      <Button className="text-md rounded-[12px]" onClick={() => setOpen(true)}>
-        Sign in
-      </Button>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button className="text-md rounded-[12px]" variant="outline">
-            Open Modal
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="flex max-w-2xl p-0">
-          <div className="flex flex-1 items-center justify-center bg-gray-200">
-            <div className="text-9xl font-bold text-gray-400">G</div>
-          </div>
-          <div className="flex-1 p-8">
-            <DialogHeader className="flex items-center justify-between">
-              <DialogTitle>Sign in to Goznuk</DialogTitle>
-              <Button variant="ghost" onClick={() => setOpen(false)}>
-                <DoorClosedIcon className="h-6 w-6" />
-              </Button>
-            </DialogHeader>
-            <DialogDescription className="space-y-4">
-              <Input type="email" placeholder="Email Address" />
-              <Input type="password" placeholder="Password" />
-              <Button className="flex w-full items-center justify-center space-x-2 bg-black text-white">
-                Sign In
-                <ArrowRightIcon className="h-4 w-4" />
-              </Button>
-              <div className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="flex w-full items-center justify-center space-x-2"
-                >
-                  <ChromeIcon className="h-5 w-5" />
-                  <span>Sign in with Google</span>
+      <SignIn.Root>
+        <Button
+          className="text-md rounded-[12px]"
+          onClick={() => setOpen(true)}
+        >
+          Sign in
+        </Button>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            <Button className="text-md rounded-[12px]" variant="outline">
+              Start writing
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="flex max-w-2xl p-0">
+            <div className="flex flex-1 items-center justify-center bg-gray-200">
+              <div className="text-9xl font-bold text-gray-400">G</div>
+            </div>
+            <div className="flex-1 p-8">
+              <DialogHeader className="flex items-center justify-between">
+                <DialogTitle>Sign in to Goznuk</DialogTitle>
+                <Button variant="ghost" onClick={() => setOpen(false)}>
+                  <DoorClosedIcon className="h-6 w-6" />
                 </Button>
-                <Button
-                  variant="outline"
-                  className="flex w-full items-center justify-center space-x-2"
-                >
-                  <GithubIcon className="h-5 w-5" />
-                  <span>Sign in with Github</span>
+              </DialogHeader>
+              <DialogDescription className="space-y-4">
+                <Input type="email" placeholder="Email Address" />
+                <Input type="password" placeholder="Password" />
+                <Button className="flex w-full items-center justify-center space-x-2 bg-black text-white">
+                  Sign In
+                  <ArrowRightIcon className="h-4 w-4" />
                 </Button>
-              </div>
-              <p className="text-center">
-                Don’t have an account?{' '}
-                <a href="#" className="text-blue-500">
-                  Sign Up
-                </a>
-              </p>
-            </DialogDescription>
-          </div>
-        </DialogContent>
-      </Dialog>
+                <div className="space-y-2">
+                  <Clerk.Connection name="google">
+                    <Button
+                      variant="outline"
+                      className="flex w-full items-center justify-center space-x-2"
+                    >
+                      <ChromeIcon className="h-5 w-5" />
+                      <span>Sign in with Google</span>
+                    </Button>
+                  </Clerk.Connection>
+                  <Button
+                    variant="outline"
+                    className="flex w-full items-center justify-center space-x-2"
+                  >
+                    <GithubIcon className="h-5 w-5" />
+                    <span>Sign in with Github</span>
+                  </Button>
+                </div>
+                <p className="text-center">
+                  Don’t have an account?{' '}
+                  <a href="#" className="text-blue-500">
+                    Sign Up
+                  </a>
+                </p>
+              </DialogDescription>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </SignIn.Root>
     </div>
   )
 }
