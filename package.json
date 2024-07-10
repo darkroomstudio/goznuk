@@ -31,7 +31,7 @@
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.7",
-    "next": "15.0.0-canary.60",
+    "next": "canary",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
