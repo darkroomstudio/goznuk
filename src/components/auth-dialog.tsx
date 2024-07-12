@@ -1,6 +1,7 @@
 'use client'
 import type { JSX, SVGProps } from 'react'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -11,68 +12,103 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import * as Clerk from '@clerk/elements/common'
+import * as SignIn from '@clerk/elements/sign-in'
+import Link from 'next/link'
 
 export function AuthDialog() {
   const [open, setOpen] = useState(false)
   const [isSignUp, setIsSignUp] = useState(false)
   const authText = isSignUp ? 'Sign Up' : 'Sign In'
+  const router = useRouter()
+
+  const userButtonAppearance = {
+    elements: {
+      userButtonAvatarBox: 'w-10 h-10',
+    },
+  }
   return (
     <div className="flex items-center space-x-4">
-      <Button
-        className="text-md rounded-[12px]"
-        variant="outline"
-        onClick={() => setOpen(true)}
-      >
-        Start Writing
-      </Button>
-      <Button className="text-md rounded-[12px]" onClick={() => setOpen(true)}>
-        {authText}
-      </Button>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="flex max-w-2xl p-0">
-          <div className="flex flex-1 items-center justify-center bg-gray-200">
-            <div className="text-9xl font-bold text-gray-400">G</div>
-          </div>
-          <div className="flex-1 p-8">
-            <DialogHeader className="flex items-center justify-between">
-              <DialogTitle>{authText} to Goznuk</DialogTitle>
-              <Button variant="ghost" onClick={() => setOpen(false)}>
-                <DoorClosedIcon className="h-6 w-6" />
-              </Button>
-            </DialogHeader>
-            <DialogDescription className="space-y-4">
-              <Input type="email" placeholder="Email Address" />
-              <Input type="password" placeholder="Password" />
-              <Button className="flex w-full items-center justify-center space-x-2 bg-black text-white">
-                {authText}
-                <ArrowRightIcon className="h-4 w-4" />
-              </Button>
-              <div className="space-y-2">
-                <Button
-                  variant="outline"
-                  className="flex w-full items-center justify-center space-x-2"
-                >
-                  <ChromeIcon className="h-5 w-5" />
-                  <span>{authText} with Google</span>
+      <SignIn.Root>
+        <SignedOut>
+          <Button
+            className="text-md rounded-[12px]"
+            variant="outline"
+            onClick={() => setOpen(true)}
+          >
+            Start Writing
+          </Button>
+          <Button
+            className="text-md rounded-[12px]"
+            onClick={() => setOpen(true)}
+          >
+            {authText}
+          </Button>
+        </SignedOut>
+        <SignedIn>
+          <Button
+            className="text-md rounded-[12px]"
+            variant="outline"
+            onClick={() => router.push('/write')}
+          >
+            Start Writing
+          </Button>
+          <UserButton
+            appearance={userButtonAppearance}
+            userProfileMode="modal"
+          />
+        </SignedIn>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent className="flex max-w-2xl p-0">
+            <div className="flex flex-1 items-center justify-center bg-gray-200">
+              <div className="text-9xl font-bold text-gray-400">G</div>
+            </div>
+            <div className="flex-1 p-8">
+              <DialogHeader className="flex items-center justify-between">
+                <DialogTitle>{authText} to Goznuk</DialogTitle>
+                <Button variant="ghost" onClick={() => setOpen(false)}>
+                  <DoorClosedIcon className="h-6 w-6" />
                 </Button>
-                <Button
-                  variant="outline"
-                  className="flex w-full items-center justify-center space-x-2"
-                >
-                  <GithubIcon className="h-5 w-5" />
-                  <span>{authText} with Github</span>
+              </DialogHeader>
+              <DialogDescription className="space-y-4">
+                <Input type="email" placeholder="Email Address" />
+                <Input type="password" placeholder="Password" />
+                <Button className="flex w-full items-center justify-center space-x-2 bg-black text-white">
+                  {authText}
+                  <ArrowRightIcon className="h-4 w-4" />
                 </Button>
-              </div>
-              <p className="text-center">
-                Don’t have an account?{' '}
-                <a href="#" className="text-blue-500">
-                  Sign Up
-                </a>
-              </p>
-            </DialogDescription>
-          </div>
-        </DialogContent>
-      </Dialog>
+                <div className="space-y-2">
+                  <Clerk.Connection name="google" className="w-full">
+                    <Button
+                      variant="outline"
+                      className="flex w-full items-center justify-center space-x-2"
+                    >
+                      <ChromeIcon className="h-5 w-5" />
+                      <span>{authText} with Google</span>
+                    </Button>
+                  </Clerk.Connection>
+                  <Clerk.Connection name="github" className="w-full">
+                    <Button
+                      variant="outline"
+                      className="flex w-full items-center justify-center space-x-2"
+                    >
+                      <GithubIcon className="h-5 w-5" />
+                      <span>{authText} with Github</span>
+                    </Button>
+                  </Clerk.Connection>
+                </div>
+                <p className="text-center">
+                  Don’t have an account?{' '}
+                  <Link href="#" className="text-blue-500">
+                    Sign Up
+                  </Link>
+                </p>
+              </DialogDescription>
+            </div>
+          </DialogContent>
+        </Dialog>
+      </SignIn.Root>
     </div>
   )
 }
