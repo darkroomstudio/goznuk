@@ -1,5 +1,10 @@
+import List from '@/components/list'
 import Link from 'next/link'
 
 export default function Home() {
-  return <section className="flex flex-col space-y-4"></section>
+  return (
+    <main className="container mx-auto flex min-h-dvh max-w-5xl flex-col p-6">
+      <List />
+    </main>
+  )
 }
