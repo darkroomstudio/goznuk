@@ -20,6 +20,8 @@
     "*.ts": "$(capture).test.ts, $(capture).test.tsx",
     "*.tsx": "$(capture).test.ts, $(capture).test.tsx"
   },
+  // Do not run the Jest runner on open.
+  "jest.runMode": "on-demand",
   "cSpell.words": [
     "Choi",
     "clsx",

@@ -1,5 +1,4 @@
 import List from '@/components/list'
-import Link from 'next/link'
 
 export default function Home() {
   return (
