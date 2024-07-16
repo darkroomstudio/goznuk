@@ -28,11 +28,6 @@ export function AuthDialog() {
       userButtonAvatarBox: 'w-10 h-10',
     },
   }
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log('Form submitted')
-    event.preventDefault()
-  }
   return (
     <div className="flex items-center space-x-4">
       <SignedOut>
@@ -81,7 +76,6 @@ export function AuthDialog() {
                         type="email"
                         placeholder="Email Address"
                         required
-                        onChange={(e) => console.log('Email: ', e.target.value)}
                       />
                     </Clerk.Input>
                     <Clerk.FieldError />
