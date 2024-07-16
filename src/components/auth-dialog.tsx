@@ -82,14 +82,7 @@ export function AuthDialog() {
                   </Clerk.Field>
                   <Clerk.Field name="password">
                     <Clerk.Input asChild>
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        required
-                        onChange={(e) =>
-                          console.log('Password: ', e.target.value)
-                        }
-                      />
+                      <Input type="password" placeholder="Password" required />
                     </Clerk.Input>
                     <Clerk.FieldError />
                   </Clerk.Field>
