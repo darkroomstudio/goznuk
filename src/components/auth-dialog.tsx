@@ -87,7 +87,6 @@ export function AuthDialog() {
                   <DoorClosedIcon className="h-6 w-6" />
                 </Button>
               </DialogHeader>
-              {errorMessage && <p className="text-red-500">{errorMessage}</p>}
               <SignIn.Step name="start">
                 <DialogDescription className="space-y-4">
                   <Clerk.Field name="identifier">
@@ -98,14 +97,15 @@ export function AuthDialog() {
                         required
                       />
                     </Clerk.Input>
-                    <Clerk.FieldError />
                   </Clerk.Field>
                   <Clerk.Field name="password">
                     <Clerk.Input asChild>
                       <Input type="password" placeholder="Password" required />
                     </Clerk.Input>
-                    <Clerk.FieldError />
                   </Clerk.Field>
+                  {errorMessage && (
+                    <p className="text-red-500">{errorMessage}</p>
+                  )}
                   <SignIn.Action submit asChild>
                     <Button
                       type="submit"
