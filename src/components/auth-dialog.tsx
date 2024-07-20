@@ -38,7 +38,7 @@ export function AuthDialog() {
     try {
       const result = await signIn?.create({
         identifier: email,
-        password: password,
+        password,
       })
       if (setActive) {
         await setActive({ session: result?.createdSessionId })
