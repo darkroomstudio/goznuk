@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { useSignIn } from '@clerk/clerk-react'
 import * as Clerk from '@clerk/elements/common'
 import * as SignIn from '@clerk/elements/sign-in'
 import Link from 'next/link'
@@ -20,6 +21,10 @@ import Link from 'next/link'
 export function AuthDialog() {
   const [open, setOpen] = useState(false)
   const [isSignUp, setIsSignUp] = useState(false)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const { signIn, setActive } = useSignIn()
   const authText = isSignUp ? 'Sign Up' : 'Sign In'
   const router = useRouter()
 
@@ -27,6 +32,20 @@ export function AuthDialog() {
     elements: {
       userButtonAvatarBox: 'w-10 h-10',
     },
+  }
+
+  const handleSignIn = async (e: React.FormEvent) => {
+    try {
+      const result = await signIn?.create({
+        identifier: email,
+        password,
+      })
+      if (setActive) {
+        await setActive({ session: result?.createdSessionId })
+      }
+    } catch (error) {
+      setErrorMessage('Wrong email or password')
+    }
   }
   return (
     <div className="flex items-center space-x-4">
@@ -78,18 +97,20 @@ export function AuthDialog() {
                         required
                       />
                     </Clerk.Input>
-                    <Clerk.FieldError />
                   </Clerk.Field>
                   <Clerk.Field name="password">
                     <Clerk.Input asChild>
                       <Input type="password" placeholder="Password" required />
                     </Clerk.Input>
-                    <Clerk.FieldError />
                   </Clerk.Field>
+                  {errorMessage && (
+                    <p className="text-red-500">{errorMessage}</p>
+                  )}
                   <SignIn.Action submit asChild>
                     <Button
                       type="submit"
                       className="flex w-full items-center justify-center space-x-2 bg-black text-white"
+                      onClick={handleSignIn}
                     >
                       {authText}
                       <ArrowRightIcon className="h-4 w-4" />

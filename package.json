@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^5.2.8",
     "@clerk/elements": "^0.10.2",
     "@clerk/nextjs": "^5.2.3",
     "@radix-ui/react-avatar": "^1.1.0",
