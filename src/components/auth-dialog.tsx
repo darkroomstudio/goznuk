@@ -44,6 +44,7 @@ export function AuthDialog() {
         await setActive({ session: result?.createdSessionId })
       }
     } catch (error) {
+      console.log(error)
       setErrorMessage('Wrong email or password')
     }
   }
@@ -94,13 +95,19 @@ export function AuthDialog() {
                       <Input
                         type="email"
                         placeholder="Email Address"
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                       />
                     </Clerk.Input>
                   </Clerk.Field>
                   <Clerk.Field name="password">
                     <Clerk.Input asChild>
-                      <Input type="password" placeholder="Password" required />
+                      <Input
+                        type="password"
+                        placeholder="Password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
                     </Clerk.Input>
                   </Clerk.Field>
                   {errorMessage && (
