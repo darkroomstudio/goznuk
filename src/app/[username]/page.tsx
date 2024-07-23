@@ -1,7 +1,9 @@
+import { ProfileChunk } from '@/components/profile'
+
 export default function Profile({
   params: { username },
 }: {
   params: { username: string }
 }) {
-  return <div>User Profile: {username}</div>
+  return <ProfileChunk username={username} />
 }
