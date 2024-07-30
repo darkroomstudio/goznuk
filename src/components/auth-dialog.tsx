@@ -12,11 +12,12 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut } from '@clerk/nextjs'
 import { useSignIn } from '@clerk/clerk-react'
 import * as Clerk from '@clerk/elements/common'
 import * as SignIn from '@clerk/elements/sign-in'
 import Link from 'next/link'
+import { ProfileMenu } from '@/components/profile-menu'
 
 export function AuthDialog() {
   const [open, setOpen] = useState(false)
@@ -27,12 +28,6 @@ export function AuthDialog() {
   const { signIn, setActive } = useSignIn()
   const authText = isSignUp ? 'Sign Up' : 'Sign In'
   const router = useRouter()
-
-  const userButtonAppearance = {
-    elements: {
-      userButtonAvatarBox: 'w-10 h-10',
-    },
-  }
 
   const handleSignIn = async (e: React.FormEvent) => {
     try {
@@ -73,7 +68,7 @@ export function AuthDialog() {
         >
           Start Writing
         </Button>
-        <UserButton appearance={userButtonAppearance} userProfileMode="modal" />
+        <ProfileMenu />
       </SignedIn>
       <SignIn.Root>
         <Dialog open={open} onOpenChange={setOpen}>
