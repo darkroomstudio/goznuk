@@ -4,8 +4,6 @@ import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import { cn } from '@/lib/utils'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { AuthDialog } from './auth-dialog'
 
 export function Header() {
@@ -48,7 +46,7 @@ export function Header() {
             onChange={() => console.log('change happening')}
             type="text"
             className={cn(
-              'z-10 h-10 w-[320px] rounded-[14px] border-[3px] border-gray-200 px-3 text-sm font-normal text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-[3px] focus:ring-gray-800 focus:placeholder:opacity-50',
+              'z-10 h-10 w-[300px] rounded-[14px] border-[1px] border-gray-200 px-3 text-sm font-normal text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-[2px] focus:ring-gray-800 focus:placeholder:opacity-50',
               isToggled && 'border-0'
             )}
             placeholder="Search item..."
