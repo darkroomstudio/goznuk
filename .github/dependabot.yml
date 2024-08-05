@@ -1,29 +1,12 @@
 version: 2
-updates: # Daily update for dogfooding canary releases.
+updates:
   - package-ecosystem: 'npm'
     directory: '/'
-    schedule:
-      interval: 'daily'
-      timezone: 'Asia/Seoul'
-      time: '09:00'
-    reviewers:
-      - 'devjiwonchoi'
-      - 'jeonghoyang12'
-    allow:
-      - dependency-name: 'next'
-    groups:
-      canary:
-        patterns:
-          - 'next'
-  - package-ecosystem: 'npm'
-    directory: '/'
-    # set target-branch to work around configure depbot on same directory '/'
-    # x-ref: https://github.com/dependabot/dependabot-core/issues/1778#issuecomment-1988140219
-    target-branch: main
     schedule:
       interval: 'weekly'
     reviewers:
       - 'devjiwonchoi'
+      - 'jeonghoyang12'
     groups:
       prod:
         dependency-type: 'production'
